@@ -29,3 +29,5 @@ This code is used to obtain and store information about songs in a specific play
 * spotipy 2.13.0 or higher
 * pandas 1.1.4 or higher
 * configparser 3.8.1 or higher
+
+**Let the game begin!**
