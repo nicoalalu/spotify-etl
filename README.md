@@ -12,7 +12,7 @@ This code uses the "configparser" library to read credentials from a configurati
 - spotipy_redirect_uri=your_redirect_uri
 
 ------------------------
-To learn how this ConfigParser works on python, here is a [brief](https://www.onlinetutorialspoint.com/python/python-how-to-read-config-ini-files.html) tutorial with examples
+To learn how this ConfigParser works on python, here is a brief [tutorial](https://www.onlinetutorialspoint.com/python/python-how-to-read-config-ini-files.html) with examples
 
 
 Before using this code, it is necessary to have a registered user on Spotify and an application created on the [Spotify developer dashboard](https://developer.spotify.com/dashboard/applications) to obtain the necessary credentials (client_id and client_secret) and place them in the config.ini file and a valid redirect URL to place in the spotipy_redirect_uri section of the config.ini file
