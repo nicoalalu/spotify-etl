@@ -3,13 +3,6 @@ import pandas as pd
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 import json
-import networkx as nx
-import matplotlib.pyplot as plt
-import scipy
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import sqlite3
 
 
 # read the Spotify credentials from config file
