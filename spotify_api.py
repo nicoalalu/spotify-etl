@@ -12,7 +12,7 @@ from plotly.subplots import make_subplots
 import sqlite3
 
 
-# read credentials from config file
+# read the Spotify credentials from config file
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -20,6 +20,11 @@ config.read('config.ini')
 client_id = config['spotify']['client_id']
 client_secret = config['spotify']['client_secret']
 spotipy_redirect_uri = config['spotify']['spotipy_redirect_uri']
+playlist_id = config['spotify']['playlist_id']
+
+# Read the path from the config file
+
+file_path = config['general']['file_path']
 
 # create spotipy connector
 
@@ -27,13 +32,9 @@ scope = 'user-read-recently-played'
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,client_secret=client_secret,redirect_uri=spotipy_redirect_uri,scope=scope))
 
 
-### Get my most representative playlist called 'Oceanic's artists'
+### Get my most representative playlist from Spotify
 
-# Store playlist Id
-
-playlist_id = '0VcSA1MBHoMH0onPpxHGWq'
-
- # Extract full json from Oceanic. Pagination navigation
+# Extract full json from your favourite playlist using pagination navigation
 
 def all_tracks(playlist_id):
     tracks_response = sp.playlist_tracks(playlist_id)
@@ -44,7 +45,7 @@ def all_tracks(playlist_id):
 
     return tracks
 
-json_oceanic = all_tracks(playlist_id)
+json_playlist = all_tracks(playlist_id)
 
 # Prepare the data and columns for future storage
 
@@ -53,17 +54,17 @@ data = []
 
 ### Extract
 
-for i in range(0,len(json_oceanic)):
-  song_id = json_oceanic[i]['track']['id']
+for i in range(0,len(json_playlist)):
+  song_id = json_playlist[i]['track']['id']
   json_audio_features = sp.audio_features(song_id)
-  artist_id = json_oceanic[i]['track']['artists'][0]['id']
-  song = json_oceanic[i]['track']['name']
-  album = json_oceanic[i]['track']['album']['name']
-  artist = json_oceanic[i]['track']['artists'][0]['name']
-  released_date = json_oceanic[i]['track']['album']['release_date']
-  added_at = json_oceanic[i]['added_at']
-  duration_ms = json_oceanic[i]['track']['duration_ms']
-  popularity = json_oceanic[i]['track']['popularity']
+  artist_id = json_playlist[i]['track']['artists'][0]['id']
+  song = json_playlist[i]['track']['name']
+  album = json_playlist[i]['track']['album']['name']
+  artist = json_playlist[i]['track']['artists'][0]['name']
+  released_date = json_playlist[i]['track']['album']['release_date']
+  added_at = json_playlist[i]['added_at']
+  duration_ms = json_playlist[i]['track']['duration_ms']
+  popularity = json_playlist[i]['track']['popularity']
   acousticness = json_audio_features[0]['acousticness']
   danceability = json_audio_features[0]['danceability']
   energy = json_audio_features[0]['energy']
@@ -77,5 +78,5 @@ for i in range(0,len(json_oceanic)):
 
 df = pd.DataFrame(data,columns=columns)
 
-df.to_csv(,index=False)
+df.to_csv(file_path,index=False)
 
