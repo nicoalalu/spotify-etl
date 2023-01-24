@@ -1,4 +1,4 @@
-# Spotify Playlist Analyzer
+# Spotify API tutorial
 
 Analyze your Spotify playlists automatically with this code!
 
