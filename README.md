@@ -1,6 +1,6 @@
 # Spotify API tutorial
 
-Analyze your Spotify playlists automatically with this code!
+Store your Spotify playlists automatically for further analysis!
 
 This code is used to obtain and store information about songs in a specific playlist and their audio features in a pandas DataFrame for further analysis. You will be able to know which songs are the most popular, acoustic, danceable, and more!
 
