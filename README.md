@@ -13,14 +13,14 @@ This code uses the "configparser" library to read credentials from a configurati
 ------------------------
 
 [spotify]
-- client_id=your_client_id
-- client_secret=your_client_secret
-- spotipy_redirect_uri=your_redirect_uri
-- playlist_id = your_playlist_id
+- client_id= <your_client_id>
+- client_secret= <your_client_secret>
+- spotipy_redirect_uri= <your_redirect_uri>
+- playlist_id = <your_playlist_id>
 
 [general]
 
-- path_file = your_path_file
+- path_file = <your_path_file>
 ------------------------
 To learn how this ConfigParser works on python, here is a brief [tutorial](https://www.onlinetutorialspoint.com/python/python-how-to-read-config-ini-files.html) with examples
 
